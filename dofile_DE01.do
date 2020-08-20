@@ -1,14 +1,14 @@
 log using AppliedEconometrics_final, replace
 *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
-* Applied Econometrics- Does Airbnb contribute to no-fault evictions in the San-Francisco area?"*
+* Does Airbnb contribute to no-fault evictions in the San-Francisco area?"*
 *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
 
 clear all
 set more off
 
 /* import data */
-cd "C:\Users\Jacky\Documents\Documents\Uni\TSE\M1\Semester2\AppliedEconometrics"
-import excel "C:\Users\Jacky\Documents\Documents\Uni\TSE\M1\Semester2\AppliedEconometrics\Data\Copy_ of_monthly_data_with_spatial_lag.xlsx", firstrow clear
+cd "C:\Users\NMTRAN\Documents\Documents\Airbnb"
+import excel "C:\Users\NMTRAN\Documents\Documents\Copy_ of_monthly_data_with_spatial_lag.xlsx", firstrow clear
 gen listing_lag_1=listings_rate[_n-1]
 drop extracted_month_year adjacent_1 adjacent_2 adjacent_3 adjacent_4 adjacent_5 adjacent_6 percap_inc listings_rate_help
 
@@ -33,8 +33,6 @@ estimates store random
 hausman fixed random
 /*Hausman test for the Main Model*/
 
-
-
 /*Main model*/
 eststo: xtivreg2 evictions_rate (listing_lag_1 = instrument_home)  Occupation_Airbnb rent_gap percp_inc_monthly total_population,fe endog(listing_lag_1)
 
@@ -55,5 +53,4 @@ est sto m1
 !baseline.rtf
 
 log close
-translate AppliedEconometrics_final.smcl AppliedEconometrics_final.pdf, replace
-
+translate Final_report.smcl Final_report.pdf, replace
