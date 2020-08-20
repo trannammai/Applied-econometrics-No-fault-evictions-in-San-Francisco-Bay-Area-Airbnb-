@@ -1,4 +1,4 @@
-log using AppliedEconometrics_final, replace
+log using Airbnb, replace
 *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
 * Does Airbnb contribute to no-fault evictions in the San-Francisco area?"*
 *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
